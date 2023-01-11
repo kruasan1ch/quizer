@@ -1,0 +1,28 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Вопрос</ion-col>
+      <ion-col>Ответ</ion-col>
+      <ion-col>Результат</ion-col>
+      <ion-col>Баллы</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let answer of answers; index as i">
+      <ion-col>{{i + 1}}</ion-col>
+      <ion-col>{{answer.selected}}</ion-col>
+      <ion-col>
+        <ng-template [ngIf]="answer.correct">
+          <ion-icon name="checkmark-outline" size="large"></ion-icon>
+        </ng-template>
+        <ng-template [ngIf]="!answer.correct">
+          <ion-icon name="close-outline" size="large"></ion-icon>
+        </ng-template>
+      </ion-col>
+      <ion-col>{{answer.points}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Всего баллов: {{totalPoints()}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
